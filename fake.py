@@ -11,7 +11,7 @@ import urllib.parse
 csv_file_path = "https://github.com/Bell-Min/streamlit_web_deploy/blob/main/fakenews_datasets.csv"
 
 # CSV 파일 로드 (가상의 컬럼 이름은 "label"과 "text"로 가정합니다.)
-df = pd.read_csv(csv_file_path)
+df = pd.read_csv(csv_file_path, encoding='utf-8')
 
 # 데이터셋에서 텍스트 데이터와 레이블 추출
 corpus = df["text"].tolist()
