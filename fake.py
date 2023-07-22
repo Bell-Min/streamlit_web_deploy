@@ -9,7 +9,7 @@ okt = Okt()
 vectorizer = TfidfVectorizer()
 label_encoder = LabelEncoder()
 
-csv_file_path = "fakenews_datasets.csv"
+csv_file_path = "https://github.com/Bell-Min/streamlit_web_deploy/blob/main/fakenews_datasets.csv"
 df = pd.read_csv(csv_file_path)
 corpus = df["text"].tolist()
 labels = df["label"].tolist()
