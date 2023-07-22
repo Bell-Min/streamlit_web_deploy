@@ -5,7 +5,6 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from konlpy.tag import Okt
-import urllib.parse
 
 # CSV 파일 경로 설정
 csv_file_path = "https://github.com/Bell-Min/streamlit_web_deploy/blob/main/fakenews_datasets.csv"
@@ -50,11 +49,6 @@ def predict_fake_news_with_prob(title):
     
     return fake_prob
 
-# 사용자가 입력한 기사 제목을 검색한 결과 페이지를 가져오는 함수
-def get_search_results(title):
-    query = f"https://www.google.com/search?q={urllib.parse.quote(title)}"
-    return query
-    
 # Streamlit 애플리케이션
 def main():
     st.title('뉴스기사 진위 여부 판단')
@@ -74,11 +68,7 @@ def main():
         else:
             st.write("판단 결과, 해당 뉴스기사는 거의 사실일 가능성이 높습니다.", f"(가짜뉴스일 확률: {fake_prob*100:.2f}%)")
 
-        # 검색 결과 주소를 출력
-        search_result_url = get_search_results(new_article_title)
-        st.markdown(f"그러나, 아무리 잘 학습된 인공지능일지라도 완벽한 판단을 내릴 수는 없습니다. [다음의 링크]({search_result_url})로 이동해 해당 뉴스기사의 진위 여부를 정확히 알아보세요!")
-
 if __name__ == '__main__':
     main()
 
-#python -m streamlit run fake.py
+# python -m streamlit run fake.py
